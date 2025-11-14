@@ -1,26 +1,37 @@
 # Open Autonomous Protocol (OAP)
+### Open-source & verifiable autonomous driving stack aligned with insurance incentives.
 
-> Open-source and verifiable autonomous driving stack aligned with insurance incentives.
+OAP, otonom araç yazılımını:
 
-Bu repo, *Open Autonomous Protocol* için taslak bir landing page ve
-teknik whitepaper iskeleti içerir. Amaç, otonom sürüş yazılımını:
+- *Açık kaynak (open-source)*
+- *Kriptografik olarak doğrulanabilir (verifiable compute / ZK proofs)*
+- *Sigorta teşvikleriyle hizalanmış (insurance-aligned risk model)*
 
-- Açık kaynak,
-- Kriptografik olarak doğrulanabilir,
-- Sigorta şirketlerinin teşvikleriyle uyumlu
+bir standart çerçeveye oturtmayı hedefleyen deneysel bir protokoldür.
 
-bir standart çerçeveye oturtmaktır.
+Amaç, şu soruya teknik bir “Evet.” cevabı verebilmektir:
 
-## Yapı
+> **“Bu araç gerçekten lisanslı, açık kaynaktan derlenmiş,
+> doğrulanabilir algoritmayı çalıştırıyor mu?”**
 
-- index.html – Landing page
-- style.css – Ana stil dosyası
-- script.js – Basit etkileşimler (mobil menü, form demo)
-- docs/WHITEPAPER.md – Teknik whitepaper (taslak)
+---
 
-## Geliştirme
+## 🔥 Vizyon  
+Bugünün otonom sürüş sistemleri kapalı kutu, denetlenemez ve teşvikleri belirsizdir.
 
-```bash
-# Klonla
-git clone https://github.com/musaxd57/open-autonomous-protocol.git
-cd open-autonomous-protocol
+OAP, bu durumu tersine çevirmek için:
+
+- *Açık kaynak algoritmalar*
+- *Donanım/algoritma attestation mekanizmaları*
+- *ZK temelli doğrulama*
+- *Sigorta şirketleriyle entegre lisans modeli*
+- *Topluluk tarafından incelenebilir sürüş kararları*
+
+gibi yapı taşlarını birleştirir.
+
+---
+
+## 🧱 Proje Yapısı
+
+Bu depo, hem web arayüzünü (landing page) hem de teknik dokümanları içerir.  
+Aşağıdaki klasör/dosya yapısı, OAP’ın şu anki minimal v0.1 prototip yapısını gösterir.
