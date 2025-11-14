@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Open Autonomous Protocol</title>
+  <link rel="stylesheet" href="OAP.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">
+        <!-- Buraya istersen kendi logo dosyanı koyabilirsin -->
+        <!-- Örn: <img src="logo-oap.svg" alt="Open Autonomous Protocol Logo" class="logo-icon" /> -->
+        <div class="logo-symbol">◎</div>
+        <div class="logo-copy">
+          <span class="logo-title">Open Autonomous Protocol</span>
+          <span class="logo-sub">Verifiable Driving Stack</span>
+        </div>
+      </div>
+
+      <button class="nav-toggle" aria-label="Menüyü Aç/Kapat">
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#hero">Ana Sayfa</a></li>
+          <li><a href="#about">Neden?</a></li>
+          <li><a href="#architecture">Mimari</a></li>
+          <li><a href="#roadmap">Yol Haritası</a></li>
+          <li><a href="#whitepaper">Whitepaper</a></li>
+          <li><a href="#contribute">Katıl</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="hero" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>
+            Açık Kaynak ve Doğrulanabilir
+            <span class="gradient-text">Otonom Ulaşım Protokolü</span>
+          </h1>
+          <p class="hero-subtitle">
+            Araçların gerçekten çalıştırdığı algoritmayı doğrulayan, sigorta ile
+            hizalanmış, açık kaynak bir otonom sürüş standardı. 
+            Kodu herkes görebilir, davranışı kriptografik olarak doğrulanabilir.
+          </p>
+          <div class="hero-actions">
+            <a href="#contribute" class="btn primary">Erken Katılımcı Ol</a>
+            <a href="#architecture" class="btn ghost">Mimaride Ne Var?</a>
+          </div>
+          <div class="hero-tags">
+            <span>Otonom Araçlar</span>
+            <span>Kriptografi</span>
+            <span>Sigorta Teşvikleri</span>
+            <span>Açık Kaynak</span>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-badge">Proof of Drive • v0.1 taslak</div>
+          <div class="hero-card-main">
+            <h2>Verifiable Driving Stack</h2>
+            <ul class="hero-metrics">
+              <li>
+                <span class="label">Katman</span>
+                <span class="value">Açık Kaynak Algoritma</span>
+              </li>
+              <li>
+                <span class="label">Doğrulama</span>
+                <span class="value">ZK / Verifiable Compute</span>
+              </li>
+              <li>
+                <span class="label">Teşvik</span>
+                <span class="value">Sigorta + Kripto Ekonomi</span>
+              </li>
+            </ul>
+            <p class="hero-card-note">
+              Amaç: “Bu araç gerçekten lisanslı, açık kaynaktan derlenmiş,
+              doğrulanabilir algoritmayı çalıştırıyor mu?” sorusuna
+              kriptografik bir “Evet.” cevabı vermek.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container section-inner two-column">
+        <div>
+          <h2>Neden Böyle Bir Protokole İhtiyaç Var?</h2>
+          <p>
+            Bugün otonom sürüş sistemleri büyük oranda kapalı kutu. 
+            Algoritmayı kim yazıyor, hangi verilerle eğitildi, riskleri kim üstleniyor? 
+            Bu soruların cevabı net değil.
+          </p>
+          <p>
+            <strong>Open Autonomous Protocol (OAP)</strong>, üç ana hedefe odaklanır:
+          </p>
+          <ul class="list-check">
+            <li>Açık kaynak sürüş algoritmaları için küresel bir standart.</li>
+            <li>Araç üzerinde gerçekten bu kodun çalıştığını
+              <strong>doğrulanabilir kılan</strong> kriptografik yapı.</li>
+            <li>Sigorta şirketleri ile hizalanmış, teşvik uyumlu bir ekonomi modeli.</li>
+          </ul>
+        </div>
+        <div class="highlight-box">
+          <h3>Temel Prensipler</h3>
+          <ul class="pill-list">
+            <li>Open Source</li>
+            <li>Verifiable by Design</li>
+            <li>Insurance-Aligned</li>
+            <li>Public Good</li>
+          </ul>
+          <p class="small">
+            OAP bir ürün değil; herkesin üzerinde inşa edebileceği 
+            açık bir altyapı vizyonudur. Amaç tek bir şirketi değil,
+            tüm ekosistemi güçlendirmek.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARCHITECTURE -->
+    <section id="architecture" class="section section-alt">
+      <div class="container section-inner">
+        <h2>Mimari Özet</h2>
+        <p class="section-lead">
+          Protokol üç ana katmandan oluşur: Algoritma Katmanı, Doğrulama Katmanı
+          ve Teşvik Katmanı.
+        </p>
+
+        <div class="arch-grid">
+          <article class="arch-card">
+            <h3>1. Algoritma Katmanı</h3>
+            <p>
+              Otonom sürüş için kullanılan yazılımın açık kaynak olarak 
+              geliştirilmesi ve denetlenebilir depolarda tutulması.
+            </p>
+            <ul>
+              <li>Git tabanlı versiyonlama</li>
+              <li>Açık güvenlik incelemeleri</li>
+              <li>Standart API’ler</li>
+            </ul>
+          </article>
+
+          <article class="arch-card">
+            <h3>2. Doğrulama Katmanı</h3>
+            <p>
+              Araçta çalışan kodun, onaylanmış açık kaynak sürümü ile
+              uyumlu olduğunu kriptografik olarak kanıtlayan yapı.
+            </p>
+            <ul>
+              <li>Verifiable Compute / ZK Proofs</li>
+              <li>Güvenilir donanım modülleri</li>
+              <li>On-chain / off-chain doğrulama</li>
+            </ul>
+          </article>
+
+          <article class="arch-card">
+            <h3>3. Teşvik Katmanı</h3>
+            <p>
+              Sigorta şirketleri, geliştiriciler ve araç üreticileri arasında
+              risk ve ödül paylaşımını düzenleyen ekonomik model.
+            </p>
+            <ul>
+              <li>Sigorta onaylı algoritma lisansları</li>
+              <li>Katkı sağlayan geliştiricilere ödüller</li>
+              <li>Güvenli sürüş davranışını teşvik eden mekanizmalar</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section id="roadmap" class="section">
+      <div class="container section-inner">
+        <h2>Yol Haritası (Taslak)</h2>
+        <p class="section-lead">
+          Bu proje henüz fikir aşamasında. Ama sağlam bir yol haritası olmadan
+          kimseyi ikna edemezsin. Aşağıdaki adımlar toplulukla birlikte 
+          evrilecek taslak bir çerçevedir.
+        </p>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-badge">AŞAMA 1</div>
+            <h3>Manifesto & Whitepaper</h3>
+            <p>
+              Projenin vizyonu, problemin tanımı ve mimari öneri net bir 
+              teknik dokümanda toplanır.
+            </p>
+            <span class="tag">0–3 ay</span>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-badge">AŞAMA 2</div>
+            <h3>Simülasyon & Proof of Concept</h3>
+            <p>
+              Gerçek araçlara geçmeden önce, simülasyon ortamında 
+              verifiable driving konsepti test edilir.
+            </p>
+            <span class="tag">3–12 ay</span>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-badge">AŞAMA 3</div>
+            <h3>Endüstri & Sigorta Partnerlikleri</h3>
+            <p>
+              Araç üreticileri, sigorta şirketleri ve regülatörlerle
+              ilk pilot programların tasarlanması.
+            </p>
+            <span class="tag">12–36 ay</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHITEPAPER SECTION -->
+    <section id="whitepaper" class="section section-whitepaper">
+      <div class="container section-inner two-column">
+        <div>
+          <h2>Whitepaper</h2>
+          <p class="section-lead">
+            Teknik detaylar, teşvik modeli, mimari ve risk analizi;
+            hepsi tek bir dokümanda toplanıyor. Aşağıdaki özet, GitHub’daki
+            tam <strong>WHITEPAPER.md</strong> dosyasının kısa bir önizlemesidir.
+          </p>
+          <ul class="list-check">
+            <li>Problem tanımı: Neden verifiable otonom sürüş?</li>
+            <li>Mimari: Algoritma, Doğrulama, Teşvik katmanları.</li>
+            <li>Tehdit modeli ve güvenlik varsayımları.</li>
+            <li>Yol haritası, riskler ve açık sorular.</li>
+          </ul>
+        </div>
+        <div class="whitepaper-box">
+          <h3>Whitepaper’ı Oku</h3>
+          <p>
+            GitHub reposunda tutulan whitepaper, versiyonlanabilir ve
+            topluluk katkısına açık bir formda olacak.
+          </p>
+          <a
+            class="btn primary full-width"
+            href="https://github.com/musaxd57/open-autonomous-protocol"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub Reposunu Aç
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTRIBUTE -->
+    <section id="contribute" class="section section-alt">
+      <div class="container section-inner two-column">
+        <div>
+          <h2>Katılmak İster misin?</h2>
+          <p>
+            Bu site şu an bir <strong>taslak landing page</strong>. 
+            Buradan sonra GitHub, topluluk kanalları ve teknik dokümanlar
+            bağlanabilir. Şimdilik sadece niyeti ve vizyonu anlatıyoruz.
+          </p>
+          <p>
+            Eğer otonom sürüş, kriptografi, sigorta, hukuk veya altyapı
+            tarafında deneyimin varsa, adını bu projenin ilk destekçileri
+            arasına yazdırabilirsin.
+          </p>
+          <ul class="list-check">
+            <li>GitHub reposu (aktif)</li>
+            <li>Teknik whitepaper (taslak)</li>
+            <li>Topluluk çağrıları ve online oturumlar</li>
+          </ul>
+        </div>
+        <div>
+          <form class="cta-form" id="interest-form">
+            <h3>Erken Katılım Formu</h3>
+            <p class="small">
+              Form şimdilik gerçek bir backend’e bağlı değil. 
+              Demo olarak çalışıyor; ama tasarım ve akış, ileride
+              API bağlamaya hazır.
+            </p>
+            <label>
+              Ad / Rumuz
+              <input type="text" name="name" placeholder="Örn: isa / vitalik-2.0" required />
+            </label>
+            <label>
+              E-posta
+              <input type="email" name="email" placeholder="you@example.com" required />
+            </label>
+            <label>
+              Rolün
+              <select name="role">
+                <option value="engineer">Mühendis (ML / Kripto / Yazılım)</option>
+                <option value="insurance">Sigorta / Risk</option>
+                <option value="policy">Regülasyon / Hukuk</option>
+                <option value="hardware">Donanım / Otomotiv</option>
+                <option value="investor">Yatırımcı / Fon</option>
+                <option value="other">Diğer</option>
+              </select>
+            </label>
+            <label>
+              Kısaca kendini anlat
+              <textarea name="message" rows="3" placeholder="Kısaca deneyimini ve neden ilgilendiğini yaz."></textarea>
+            </label>
+            <button type="submit" class="btn primary full-width">
+              Kaydı Gönder (Demo)
+            </button>
+            <p class="form-message" id="form-message"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Open Autonomous Protocol · Taslak topluluk projesi</p>
+      <p class="footer-note">
+        Bu sayfa, merkeziyetsiz ve doğrulanabilir ulaşım fikrini test etmek için 
+        hazırlanmış bir taslaktır. Gerçek bir organizasyonu temsil etmez (şimdilik).
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
