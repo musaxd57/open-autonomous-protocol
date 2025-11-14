@@ -1,201 +1,275 @@
-                                 Apache License
-                           Version 2.0, January 2004
-                        http://www.apache.org/licenses/
+## 📘 docs/WHITEPAPER.md 
 
-   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+```markdown
+# Open Autonomous Protocol (OAP)
+### A Verifiable, Insurance-Aligned, Open-Source Autonomous Driving Stack
 
-   1. Definitions.
+> Version: 0.1 (Draft)
 
-      "License" shall mean the terms and conditions for use, reproduction,
-      and distribution as defined by Sections 1 through 9 of this document.
+---
 
-      "Licensor" shall mean the copyright owner or entity authorized by
-      the copyright owner that is granting the License.
+## 1. Abstract
 
-      "Legal Entity" shall mean the union of the acting entity and all
-      other entities that control, are controlled by, or are under common
-      control with that entity. For the purposes of this definition,
-      "control" means (i) the power, direct or indirect, to cause the
-      direction or management of such entity, whether by contract or
-      otherwise, or (ii) ownership of fifty percent (50%) or more of the
-      outstanding shares, or (iii) beneficial ownership of such entity.
+Autonomous driving systems today are largely closed, opaque, and governed by
+company-specific risk assumptions. Society is asked to trust a black box.
 
-      "You" (or "Your") shall mean an individual or Legal Entity
-      exercising permissions granted by this License.
+*Open Autonomous Protocol (OAP)* proposes a framework where:
 
-      "Source" form shall mean the preferred form for making modifications,
-      including but not limited to software source code, documentation
-      source, and configuration files.
+- The driving algorithm is *open source*,
+- The runtime behavior of the algorithm is *cryptographically verifiable*, and
+- The risk model is *aligned with insurance providers* that are willing to
+  underwrite crashes caused by the algorithm.
 
-      "Object" form shall mean any form resulting from mechanical
-      transformation or translation of a Source form, including but
-      not limited to compiled object code, generated documentation,
-      and conversions to other media types.
+The central question OAP aims to answer:
 
-      "Work" shall mean the work of authorship, whether in Source or
-      Object form, made available under the License, as indicated by a
-      copyright notice that is included in or attached to the work
-      (an example is provided in the Appendix below).
+> “Is this vehicle actually running the licensed, open-source, audited, and
+> insurance-backed driving algorithm it claims to run?”
 
-      "Derivative Works" shall mean any work, whether in Source or Object
-      form, that is based on (or derived from) the Work and for which the
-      editorial revisions, annotations, elaborations, or other modifications
-      represent, as a whole, an original work of authorship. For the purposes
-      of this License, Derivative Works shall not include works that remain
-      separable from, or merely link (or bind by name) to the interfaces of,
-      the Work and Derivative Works thereof.
+OAP does *not* try to define the “best” driving policy. Instead, it defines
+the technical and economic constraints under which any such policy can be
+audited, verified, and incentivized.
 
-      "Contribution" shall mean any work of authorship, including
-      the original version of the Work and any modifications or additions
-      to that Work or Derivative Works thereof, that is intentionally
-      submitted to Licensor for inclusion in the Work by the copyright owner
-      or by an individual or Legal Entity authorized to submit on behalf of
-      the copyright owner. For the purposes of this definition, "submitted"
-      means any form of electronic, verbal, or written communication sent
-      to the Licensor or its representatives, including but not limited to
-      communication on electronic mailing lists, source code control systems,
-      and issue tracking systems that are managed by, or on behalf of, the
-      Licensor for the purpose of discussing and improving the Work, but
-      excluding communication that is conspicuously marked or otherwise
-      designated in writing by the copyright owner as "Not a Contribution."
+---
 
-      "Contributor" shall mean Licensor and any individual or Legal Entity
-      on behalf of whom a Contribution has been received by Licensor and
-      subsequently incorporated within the Work.
+## 2. Motivation
 
-   2. Grant of Copyright License. Subject to the terms and conditions of
-      this License, each Contributor hereby grants to You a perpetual,
-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-      copyright license to reproduce, prepare Derivative Works of,
-      publicly display, publicly perform, sublicense, and distribute the
-      Work and such Derivative Works in Source or Object form.
+Current autonomous driving ecosystems suffer from several issues:
 
-   3. Grant of Patent License. Subject to the terms and conditions of
-      this License, each Contributor hereby grants to You a perpetual,
-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-      (except as stated in this section) patent license to make, have made,
-      use, offer to sell, sell, import, and otherwise transfer the Work,
-      where such license applies only to those patent claims licensable
-      by such Contributor that are necessarily infringed by their
-      Contribution(s) alone or by combination of their Contribution(s)
-      with the Work to which such Contribution(s) was submitted. If You
-      institute patent litigation against any entity (including a
-      cross-claim or counterclaim in a lawsuit) alleging that the Work
-      or a Contribution incorporated within the Work constitutes direct
-      or contributory patent infringement, then any patent licenses
-      granted to You under this License for that Work shall terminate
-      as of the date such litigation is filed.
+1. *Opacity of code and training data*  
+   - Proprietary models make safety evaluation difficult.  
+   - External audits are limited or impossible.
 
-   4. Redistribution. You may reproduce and distribute copies of the
-      Work or Derivative Works thereof in any medium, with or without
-      modifications, and in Source or Object form, provided that You
-      meet the following conditions:
+2. *Misaligned incentives*  
+   - Companies optimize for growth and cost, not for provable safety.  
+   - Risk is often socialized, while upside is privatized.
 
-      (a) You must give any other recipients of the Work or
-          Derivative Works a copy of this License; and
+3. *Regulatory uncertainty*  
+   - Regulators lack robust tools to demand verifiable safety guarantees.  
+   - Most frameworks rely on ex post accident analysis, not ex ante proofs.
 
-      (b) You must cause any modified files to carry prominent notices
-          stating that You changed the files; and
+4. *Public trust deficit*  
+   - A lack of verifiable guarantees undermines public acceptance.
 
-      (c) You must retain, in the Source form of any Derivative Works
-          that You distribute, all copyright, patent, trademark, and
-          attribution notices from the Source form of the Work,
-          excluding those notices that do not pertain to any part of
-          the Derivative Works; and
+OAP attempts to address these issues by combining:
 
-      (d) If the Work includes a "NOTICE" text file as part of its
-          distribution, then any Derivative Works that You distribute must
-          include a readable copy of the attribution notices contained
-          within such NOTICE file, excluding those notices that do not
-          pertain to any part of the Derivative Works, in at least one
-          of the following places: within a NOTICE text file distributed
-          as part of the Derivative Works; within the Source form or
-          documentation, if provided along with the Derivative Works; or,
-          within a display generated by the Derivative Works, if and
-          wherever such third-party notices normally appear. The contents
-          of the NOTICE file are for informational purposes only and
-          do not modify the License. You may add Your own attribution
-          notices within Derivative Works that You distribute, alongside
-          or as an addendum to the NOTICE text from the Work, provided
-          that such additional attribution notices cannot be construed
-          as modifying the License.
+- Open-source development practices,
+- Verifiable computing and cryptography,
+- Explicit integration with insurance markets.
 
-      You may add Your own copyright statement to Your modifications and
-      may provide additional or different license terms and conditions
-      for use, reproduction, or distribution of Your modifications, or
-      for any such Derivative Works as a whole, provided Your use,
-      reproduction, and distribution of the Work otherwise complies with
-      the conditions stated in this License.
+---
 
-   5. Submission of Contributions. Unless You explicitly state otherwise,
-      any Contribution intentionally submitted for inclusion in the Work
-      by You to the Licensor shall be under the terms and conditions of
-      this License, without any additional terms or conditions.
-      Notwithstanding the above, nothing herein shall supersede or modify
-      the terms of any separate license agreement you may have executed
-      with Licensor regarding such Contributions.
+## 3. Design Principles
 
-   6. Trademarks. This License does not grant permission to use the trade
-      names, trademarks, service marks, or product names of the Licensor,
-      except as required for reasonable and customary use in describing the
-      origin of the Work and reproducing the content of the NOTICE file.
+1. *Open Source by Default*  
+   - Core driving policies are published under an open license.  
+   - Code, tests, and audit reports live in public repositories.
 
-   7. Disclaimer of Warranty. Unless required by applicable law or
-      agreed to in writing, Licensor provides the Work (and each
-      Contributor provides its Contributions) on an "AS IS" BASIS,
-      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
-      implied, including, without limitation, any warranties or conditions
-      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
-      PARTICULAR PURPOSE. You are solely responsible for determining the
-      appropriateness of using or redistributing the Work and assume any
-      risks associated with Your exercise of permissions under this License.
+2. *Verifiable by Design*  
+   - The protocol is built around the ability to prove that the car
+     executed specific logic on specific inputs, within defined constraints.
 
-   8. Limitation of Liability. In no event and under no legal theory,
-      whether in tort (including negligence), contract, or otherwise,
-      unless required by applicable law (such as deliberate and grossly
-      negligent acts) or agreed to in writing, shall any Contributor be
-      liable to You for damages, including any direct, indirect, special,
-      incidental, or consequential damages of any character arising as a
-      result of this License or out of the use or inability to use the
-      Work (including but not limited to damages for loss of goodwill,
-      work stoppage, computer failure or malfunction, or any and all
-      other commercial damages or losses), even if such Contributor
-      has been advised of the possibility of such damages.
+3. *Insurance-Aligned Risk Sharing*  
+   - Algorithms are “licensed” only if an insurer is willing to underwrite
+     the risk of their failures.
 
-   9. Accepting Warranty or Additional Liability. While redistributing
-      the Work or Derivative Works thereof, You may choose to offer,
-      and charge a fee for, acceptance of support, warranty, indemnity,
-      or other liability obligations and/or rights consistent with this
-      License. However, in accepting such obligations, You may act only
-      on Your own behalf and on Your sole responsibility, not on behalf
-      of any other Contributor, and only if You agree to indemnify,
-      defend, and hold each Contributor harmless for any liability
-      incurred by, or claims asserted against, such Contributor by reason
-      of your accepting any such warranty or additional liability.
+4. *Modular and Extensible*  
+   - OAP defines interfaces and constraints, not a single monolithic stack.
 
-   END OF TERMS AND CONDITIONS
+5. *Public Good Orientation*  
+   - The protocol is designed as shared infrastructure, not a single-company product.
 
-   APPENDIX: How to apply the Apache License to your work.
+---
 
-      To apply the Apache License to your work, attach the following
-      boilerplate notice, with the fields enclosed by brackets "[]"
-      replaced with your own identifying information. (Don't include
-      the brackets!)  The text should be enclosed in the appropriate
-      comment syntax for the file format. We also recommend that a
-      file or class name and description of purpose be included on the
-      same "printed page" as the copyright notice for easier
-      identification within third-party archives.
+## 4. High-Level Architecture
 
-   Copyright [yyyy] [name of copyright owner]
+OAP is organized into three main layers:
 
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
+1. *Algorithm Layer*  
+2. *Verification Layer*  
+3. *Incentive Layer*
 
-       http://www.apache.org/licenses/LICENSE-2.0
+### 4.1 Algorithm Layer
 
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+The Algorithm Layer defines how autonomous driving logic is specified and
+published.
+
+- *Open Source Repositories*  
+  - Git-based workflows (e.g., GitHub, GitLab).  
+  - Mandatory code review, CI, and open issues.
+
+- *Interfaces & APIs*  
+  - Standardized APIs for sensing, planning, and control.  
+  - Clear separation between platform-specific drivers and core logic.
+
+- *Testing & Validation Suites*  
+  - Public simulation scenarios.  
+  - Safety-regression test suites.  
+  - Benchmarks for edge cases.
+
+The primary artifact of this layer is a *versioned, auditable release* of
+the driving stack, e.g. OAP-Drive v1.2.0.
+
+### 4.2 Verification Layer
+
+The Verification Layer ensures that the vehicle is indeed running a
+licensed version of an approved algorithm.
+
+Possible components:
+
+- *Trusted Execution Environments (TEE)*  
+  - Secure enclaves that attest to the code hash being executed.
+
+- *Verifiable Compute / ZK Proofs*  
+  - Zero-knowledge (or related) proofs that a given decision was produced by
+    a permitted algorithm on a given input stream.
+
+- *Attestation Protocols*  
+  - Periodic or event-based remote attestation to regulators or insurers.  
+  - On-chain or off-chain proof aggregation.
+
+The main outcome is a verifiable statement:
+
+> “At time T, vehicle V executed algorithm A (hash H) with attested
+> hardware configuration and constraints.”
+
+### 4.3 Incentive Layer
+
+The Incentive Layer defines “who pays when things go wrong” and “who is
+rewarded when things go well”.
+
+- *Insurance-Backed Licenses*  
+  - An algorithm release is not considered “OAP-compliant” unless an
+    insurer has explicitly agreed to underwrite its operational risk.
+
+- *Economic Flows*  
+  - Premiums paid by operators/manufacturers.  
+  - Payouts to affected parties in case of at-fault incidents.  
+  - Reward mechanisms for developers improving safety metrics.
+
+- *On-chain Representation (Optional)*  
+  - Policies and commitments may be represented on-chain for transparency.  
+  - Not required, but can be beneficial for composability and auditability.
+
+---
+
+## 5. Threat Model
+
+### 5.1 Adversaries
+
+- *Malicious Operators* – try to run unlicensed or modified code
+  while claiming compliance.
+- *Malicious Developers* – introduce backdoors or unsafe behavior
+  into the codebase.
+- *External Attackers* – attempt to compromise hardware or tamper with
+  sensor data.
+- *Rational but Selfish Actors* – attempt to game metrics or economic
+  incentives.
+
+### 5.2 Assumptions
+
+- At least one verification mechanism (TEE, ZK, etc.) is sound and
+  difficult to subvert.
+- There exists an honest minority of auditors and developers reviewing code.
+- Insurance providers are economically motivated to avoid excessive risk.
+
+### 5.3 Goals
+
+OAP seeks to make it:
+
+- *Hard to cheat* without being detected,
+- *Expensive to cheat* when compared to honest operation,
+- *Economically attractive* to participate honestly.
+
+---
+
+## 6. Governance
+
+This draft does not fully specify governance, but outlines options:
+
+1. *Foundation Model*  
+   - A non-profit foundation coordinates standards, reference implementations,
+     and releases.
+
+2. *Multi-Stakeholder Council*  
+   - Representatives from:
+     - Open-source developers
+     - Vehicle manufacturers
+     - Insurers
+     - Regulators
+     - Civil society
+
+3. *On-chain Governance (Optional)*  
+   - Some decisions (e.g., parameter updates, grant distributions) may be
+     governed via on-chain voting by recognized stakeholders.
+
+Key questions:
+
+- Who approves new algorithm releases as “OAP-compliant”?
+- Who can revoke a license in case of discovered vulnerabilities?
+- How are disputes between stakeholders resolved?
+
+---
+
+## 7. Implementation Roadmap (Draft)
+
+1. *Phase 0 – Manifesto & Community Formation (0–3 months)*  
+   - Publish this whitepaper as v0.1.  
+   - Attract early contributors across ML, cryptography, insurance, and policy.
+
+2. *Phase 1 – Simulation Prototype (3–12 months)*  
+   - Implement a “verifiable driving loop” in a simulation environment.  
+   - Demonstrate that decisions are provably generated by a given algorithm.
+
+3. *Phase 2 – Hardware Integration (12–24 months)*  
+   - Integrate with specific hardware platforms / TEEs.  
+   - Run small-scale closed-track tests.
+
+4. *Phase 3 – Insurance & Regulatory Pilots (24–36+ months)*  
+   - Collaborate with one or more insurers for pilot policies.  
+   - Explore regulatory sandboxes in forward-looking jurisdictions.
+
+---
+
+## 8. Risks and Open Questions
+
+- *Technical Complexity* – Verifiable compute at real-time speeds is hard.  
+- *Regulatory Capture* – Large firms may attempt to dominate standards.  
+- *Over-Reliance on Specific Crypto Primitives* – Long-term cryptographic
+  assumptions may fail.  
+- *Liability Fragmentation* – Too many parties may blur responsibility.
+
+Open research questions include:
+
+- Efficient proof systems tailored for driving workloads.  
+- Practical schemes for partial logging that preserve privacy.  
+- Balanced governance structures that avoid capture.
+
+---
+
+## 9. Conclusion
+
+Open Autonomous Protocol is an attempt to reframe autonomous driving as:
+
+- A *public good*,
+- With *open, verifiable logic*, and
+- *Explicit economic alignment* between those who build, deploy, insure,
+  and are affected by these systems.
+
+This document is a starting point, not a finished design. Constructive
+criticism, alternative architectures, and practical field experience
+are explicitly invited.
+
+---
+
+## 10. Call for Contributors
+
+We are looking for:
+
+- ML / robotics / autonomous driving engineers  
+- Cryptography and verifiable computing researchers  
+- Insurance actuaries and risk modelers  
+- Policy and regulatory experts  
+- Hardware and embedded systems engineers
+
+If this vision resonates with you, please open an issue or pull request in
+the repository, or reach out via the contact channels listed in the README.
